@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 
-export default function  TextForm(formProp)  {
+export default function  TextForm({header, mode, showAlert})  {
     const handleUppEvent = () => {
         let newText = text.toUpperCase();
         UpdateText(newText)
-        formProp.showAlert("your text is converted to UpperCase", "success")
+        showAlert("your text is converted to UpperCase", "success")
     }
     const handleloEvent = () => {
         let newText = text.toLowerCase();
         UpdateText(newText)
-        formProp.showAlert("your text is converted to LowerCase", "success")
+        showAlert("your text is converted to LowerCase", "success")
 
     }
     const handleClearEvent = () => {
         let newText =  '';
         UpdateText(newText)
-        formProp.showAlert("your text has been Cleared", "success")
+        showAlert("your text has been Cleared", "success")
 
     }
     const handleSpellEvent = () => {
@@ -28,7 +28,7 @@ export default function  TextForm(formProp)  {
             (window.speechSynthesis.cancel())
         }
        
-        formProp.showAlert("your words are", "success")
+        showAlert("your words are", "success")
 
     }
     const handleCopyEvent = () => {
@@ -36,20 +36,20 @@ export default function  TextForm(formProp)  {
         newText.select()
        navigator.clipboard.writeText(newText.value);
        document.getSelection().removeAllRanges();
-       formProp.showAlert("your text has been copied", "success")
+       showAlert("your text has been copied", "success")
 
     }
 
     const handleRemoveEvent = () => {
         let newText =  text.split(/[ ]+/).join("");
         UpdateText(newText)
-        formProp.showAlert("your text spaces has been removed", "success")
+        showAlert("your text spaces has been removed", "success")
 
     }
     const handleCapitalEvent = () => {
         let newText =  text.split("")[0].toUpperCase() + text.slice(1);
         UpdateText(newText)
-        formProp.showAlert("your text has been capitalize", "success")
+        showAlert("your text has been capitalize", "success")
     }
 
 
@@ -65,9 +65,9 @@ export default function  TextForm(formProp)  {
 
    <div className='container'>
 
-<h3 className='mb-3'>{formProp.header}</h3>
+<h3 className='mb-3'>{header}</h3>
 <div className="mb-3">
-  <textarea className="form-control" value={text} onChange={handleOnchange} style={{backgroundColor: formProp.mode === "light" ? "white": "#042743", color: formProp.mode === "light" ? "black": "white"} } id="myBox" rows="8"></textarea>
+  <textarea className="form-control" value={text} onChange={handleOnchange} style={{backgroundColor: mode === "light" ? "white": "#042743", color: mode === "light" ? "black": "white"} } id="myBox" rows="8"></textarea>
 </div>
 
 <button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handleUppEvent}>Convert to Uppercase</button>

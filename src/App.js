@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <Navbar
-        title="TextUtils"
+        title="Text Convert AI"
         search="find"
         mode={initialMode}
         toggle={toggleMode}
@@ -58,7 +58,7 @@ function App() {
             path="/"
             element={
               <TextForm
-                header="TextUtils - Word counter, Character counter, Remove Extra Spaces."
+                header="Text Convert AI - Word counter, Character counter, Remove Extra Spaces."
                 mode={initialMode}
                 showAlert={showAlert}
               />
